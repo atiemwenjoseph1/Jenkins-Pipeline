@@ -1,11 +1,7 @@
-FROM node:8
+FROM python:3.7-alpine
 
-WORKDIR /usr/src/app
+RUN pip install requests
 
-COPY package*.json ./
+COPY hello_there.py /
 
-RUN npm install
-COPY . .
-
-EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "python", "hello_there.py"]
