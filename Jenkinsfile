@@ -1,5 +1,5 @@
 pipeline {
-  agent -any-
+  agent any
   stages {
     stage("build") {
       steps {
@@ -8,10 +8,10 @@ pipeline {
         """
       }
     }
-    stage("run") {
+    stage("Push") {
       steps {
         sh """
-          docker run --rm hello_there
+          docker push --rm hello_there
         """
       }
     }
