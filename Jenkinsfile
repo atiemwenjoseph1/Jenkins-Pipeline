@@ -1,21 +1,25 @@
 pipeline {
-  agent any
+agent any
   stages {
-    stage("build") {
-      steps {
-        sh """
-          docker build -t atiemwenjoseph/pipeline:latest .
-        """
-      }
-    }
-    stage("Login") {
-      steps {
-        // This step should not normally be used in your script. Consult the inline help for details.
-withDockerRegistry(credentialsId: 'Demo-creds-DockerHub', url: 'https://registry.hub.docker.com') {
-    // some block
-  sh 'docker push atiemwenjoseph/pipeline:latest'
-}
-      }
-    }
+//     stage("clone - git repo") {
+//       steps {
+//         git credentialsId: 'cfefa6ec-59ed-4481-9be4-6024c57c3384', url: 'https://github.com/atiemwenjoseph1/Jenkins-Pipeline.git'
+//       }
+// }
+
+stage("build") {
+  steps {
+    sh "docker build -t atiemwenjoseph/pipeline:latest ."
+    sh "docker logout"
   }
+}
+stage("Login") {
+  steps {
+// This step should not normally be used in your script. Consult the inline help for details.
+withDockerRegistry(credentialsId: 'Demo-creds-DockerHub', url: '') {
+  sh "docker image push atiemwenjoseph/pipeline:latest"
+              }
+          }
+      }
+   }
 }
