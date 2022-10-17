@@ -11,7 +11,7 @@ pipeline {
     stage("Login") {
       steps {
         sh """
-          docker login --username atiemwenjoseph --password G0ldd1sH&
+          docker login -u atiemwenjoseph -p G0ldd1sH&
         """
       }
     }
