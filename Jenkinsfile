@@ -13,7 +13,7 @@ pipeline {
         // This step should not normally be used in your script. Consult the inline help for details.
 withDockerRegistry(credentialsId: 'Demo-creds-DockerHub', url: 'https://registry.hub.docker.com') {
     // some block
-  sh 'docker push atiemwenjoseph/pipeline:latest'
+  sh 'docker push atiemwenjoseph/pipeline'
 }
       }
     }
