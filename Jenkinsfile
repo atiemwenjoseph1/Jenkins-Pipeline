@@ -10,9 +10,11 @@ pipeline {
     }
     stage("Login") {
       steps {
-        sh """
-          docker login -u atiemwenjoseph -p G0ldd1sH&
-        """
+        // This step should not normally be used in your script. Consult the inline help for details.
+withDockerRegistry(credentialsId: 'Demo-creds-DockerHub', url: 'https://registry.hub.docker.com') {
+    // some block
+  bat 'docker push atiemwenjoseph/jenkins-push:latest
+}
       }
     }
     stage("Push") {
