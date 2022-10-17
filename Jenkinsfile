@@ -15,7 +15,6 @@ stage("build") {
 }
 stage("Login") {
   steps {
-// This step should not normally be used in your script. Consult the inline help for details.
 withDockerRegistry(credentialsId: 'Demo-creds-DockerHub', url: '') {
   sh "docker image push atiemwenjoseph/pipeline:latest"
               }
